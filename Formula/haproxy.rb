@@ -20,7 +20,6 @@ class Haproxy < Formula
       USE_KQUEUE=1
       USE_POLL=1
       USE_PCRE=1
-      USE_OPENSSL=1
       USE_ZLIB=1
       ADDLIB=-lcrypto
     ]

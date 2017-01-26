@@ -24,7 +24,7 @@ class Haproxy < Formula
     ]
 
     # We build generic since the Makefile.osx doesn't appear to work
-    system "make", "CC=#{ENV.cc}", "CFLAGS=-I/usr/local/opt/openssl/include", "LDFLAGS=-L/usr/local/opt/openssl/lib", *args
+    system "make", "CC=#{ENV.cc}", "CFLAGS=-I/usr/local/opt/openssl/include", "LDFLAGS=-L/usr/local/opt/openssl/lib",  *args
     man1.install "doc/haproxy.1"
     bin.install "haproxy"
   end

@@ -1,8 +1,8 @@
+require 'formula'
+
 class Haproxy < Formula
-  desc "Reliable, high performance TCP/HTTP load balancer"
-  homepage "http://www.haproxy.org/"
-  url "http://www.haproxy.org/download/1.7/src/haproxy-1.7.2.tar.gz"
-  sha256 "f95b40f52a4d61feaae363c9b15bf411c16fe8f61fddb297c7afcca0072e4b2f"
+  homepage 'http://haproxy.1wt.eu'
+  url 'http://www.haproxy.org/download/1.5/src/haproxy-1.5.0.tar.gz'
 
   bottle do
     cellar :any
@@ -11,27 +11,21 @@ class Haproxy < Formula
     sha256 "ef89607a0342812850a845ccce1abcf055d08b1566d60aba04475a5098924b03" => :yosemite
   end
 
-  depends_on "openssl"
-  depends_on "pcre"
+  depends_on 'pcre'
 
   def install
-    args = %w[
-      TARGET=generic
-      USE_KQUEUE=1
-      USE_POLL=1
-      USE_PCRE=1
-      USE_OPENSSL=1
-      USE_ZLIB=1
-      ADDLIB=-lcrypto
+    args = ["TARGET=generic",
+            "USE_KQUEUE=1",
+            "USE_POLL=1",
+            "USE_PCRE=1",
+            "USE_OPENSSL=1",
+            "USE_ZLIB=1",
+            "ADDLIB=-lcrypto",
     ]
 
     # We build generic since the Makefile.osx doesn't appear to work
     system "make", "CC=#{ENV.cc}", "CFLAGS=#{ENV.cflags}", "LDFLAGS=#{ENV.ldflags}", *args
     man1.install "doc/haproxy.1"
     bin.install "haproxy"
-  end
-
-  test do
-    system bin/"haproxy", "-v"
   end
 end

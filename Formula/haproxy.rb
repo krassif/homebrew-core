@@ -24,8 +24,8 @@ class Haproxy < Formula
       USE_OPENSSL=1
       USE_ZLIB=1
       USE_LUA=1
-      LUA_LIB=/usr/local/lib
-      LUA_INC=/usr/local/include
+      LUA_LIB=/usr/local/bin/lua53/lib
+      LUA_INC=/usr/local/bin/lua53/include
       ADDLIB=-lcrypto
     ]
 
